@@ -1,7 +1,7 @@
 import React from "react";
 import "./sidebar.css";
 import Sidebarrow from "./sidebarrow";
-import PersonIcon from '@material-ui/icons/Person';
+// import PersonIcon from '@material-ui/icons/Person';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import FlagIcon from '@material-ui/icons/Flag';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
@@ -11,12 +11,18 @@ import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import { ExpandMoreOutlined } from "@material-ui/icons";
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useStateValue } from "../../StateProvider";
 
 function Sidebar(){
 
+    const [{user},dispatch] = useStateValue();
+
     return(
         <div className="sidebar">
-            <Sidebarrow title="Reddi Sharan"     Icon={PersonIcon}/>
+            <Sidebarrow  
+             src={user.photoURL}
+             title={user.displayName}
+            />
             <Sidebarrow title="Covid 19info"     Icon={LocalHospitalIcon}/>
             <Sidebarrow title="pages"            Icon={FlagIcon}/>
             <Sidebarrow title="friends"          Icon={PeopleAltIcon}/>
